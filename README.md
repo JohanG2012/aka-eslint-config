@@ -34,9 +34,13 @@ npm install --save-dev @johang2012/also-known-as-eslint-config
 After installation, you can use the configs by specifying them in your .eslintrc or package.json. Here are the configurations available:
 
 index.js - The base configuration for JavaScript
+
 typescript.js - Configuration for TypeScript projects
+
 node.js - Configuration for Node.js projects
+
 react.js - Configuration for React projects
+
 For example, to use the TypeScript configuration, your .eslintrc might look like this:
 
 ```json
@@ -50,9 +54,13 @@ For example, to use the TypeScript configuration, your .eslintrc might look like
 This package includes the following configurations:
 
 eslint-config-base - The base ESLint rules
+
 eslint-config-typescript - TypeScript specific rules
+
 eslint-config-node - Node.js specific rules
+
 eslint-config-react - React specific rules
+
 eslint-config-prettier - Prettier integration
 
 ## Contributing
