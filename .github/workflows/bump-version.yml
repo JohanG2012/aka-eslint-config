@@ -1,0 +1,37 @@
+name: 'Bump version'
+
+on:
+  push:
+    branches:
+      - main  # Assuming you want to bump the version when changes are pushed to main
+
+jobs:
+  bump-version:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v2
+        with:
+          fetch-depth: 0  # Ensures all history is fetched
+
+      - name: Bump version and push tag
+        id: bump_version  # Adding an ID to use its output
+        uses: phips28/gh-action-bump-version@v4.10.1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GH_PACKAGES_TOKEN }}
+          PACKAGEJSON_DIR: '.'
+        with:
+          major-wording: 'major,breaking,release-candidate'
+          minor-wording: 'refactor, change, minor'
+          patch-wording: 'fix,chore,feat,patch,config,tests,lint-fix,docs'
+          rc-wording: 'rc,Release Candidate'
+          pre-wording: 'pre,Pre-release'
+          skip-tag: 'false'
+          # Custom commit message including old and new version placeholders
+          custom-commit-message: 'version-bump: bumping version from {{oldTag}} to {{newTag}}'
+
+      - name: Push changes
+        run: |
+          git config --local user.email "action@github.com"
+          git config --local user.name "GitHub Action"
+          git push --follow-tags
