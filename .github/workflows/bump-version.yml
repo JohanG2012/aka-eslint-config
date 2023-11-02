@@ -30,7 +30,7 @@ jobs:
           pre-wording: 'pre,Pre-release'
           skip-tag: 'false'
           # Custom commit message including old and new version placeholders
-          commit-message: 'version-bump: bumping version from {{oldTag}} to {{newTag}}'
+          commit-message: 'version-bump: bumping version to {{version}}'
 
       - name: Push changes
         run: |
