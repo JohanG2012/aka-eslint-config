@@ -1,28 +1,28 @@
-name: Publish to GitHub Packages
-
 on:
   push:
     branches:
       - main
-
 jobs:
   publish:
     runs-on: ubuntu-latest
-    if: startsWith(github.event.head_commit.message, 'version-bump')  # Ensures job only runs if commit message starts with 'version-bump'
     steps:
       - name: Check out repository
         uses: actions/checkout@v2
-
+      - name: Get the version bump commit
+        id: get_version_bump_commit
+        run: |
+          echo "VERSION_BUMP_COMMIT=$(git log -1 --pretty=format:%s)" >> $GITHUB_ENV
       - name: Set up Node.js
         uses: actions/setup-node@v2
         with:
-          node-version: '14'  # Replace with your desired Node.js version
+          node-version: '14'
           registry-url: 'https://npm.pkg.github.com'
-
       - name: Install dependencies
         run: npm install
-
+      - name: Build
+        run: npm run build # Add your build script here
       - name: Publish to GitHub Packages
+        if: contains(env.VERSION_BUMP_COMMIT, 'version-bump')
         run: npm publish
         env:
-          NODE_AUTH_TOKEN: ${{ secrets.GH_PACKAGES_TOKEN }}
+          NODE_AUTH_TOKEN: ${{ secrets.GH_PACKAGES_TOKEN }} # or your custom token for GitHub packages
