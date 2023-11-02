@@ -4,6 +4,7 @@
 
 <h1 style="text-align: center;">Also Known As eslint-config 🎉</h1>
 
+
 Hey there, fellow coder! Welcome to the charming little nook of the internet that houses "Also Known As eslint-config". This isn't just any run-of-the-mill ESLint setup. Oh no, this is like the secret ingredient in your grandma's famous recipe or that hidden level in your favorite video game. It's the delightful blend of Airbnb's ESLint rules with a dash of Prettier formatting and a sprinkle of my own preferred syntax sugar.
 
 Crafted in the coding kitchen with a pinch of humor and a whole lot of love, this config is my digital sous-chef, keeping my code as clean as a whistle and as sharp as a tack. And guess what? You're invited to the party. If these rules make your code sing and your heart swing, then by all means, join in the fun!
