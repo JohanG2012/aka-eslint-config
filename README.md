@@ -1,10 +1,8 @@
-<center>
-<img src="https://github.com/JohanG2012/aka-eslint-config/blob/main/.github/images/logo.png" alt="alt text" width="100" height="100">
-</center>
+<div align="center">
+  <img src="https://github.com/JohanG2012/aka-eslint-config/blob/main/.github/images/logo.png" alt="alt text" width="100" height="100">
+</div>
 
-<center>
-# Also Known As eslint-config 🎉
-</center>
+<h1 style="text-align: center;">Also Known As eslint-config 🎉</h1>
 
 Hey there, fellow coder! Welcome to the charming little nook of the internet that houses "Also Known As eslint-config". This isn't just any run-of-the-mill ESLint setup. Oh no, this is like the secret ingredient in your grandma's famous recipe or that hidden level in your favorite video game. It's the delightful blend of Airbnb's ESLint rules with a dash of Prettier formatting and a sprinkle of my own preferred syntax sugar.
 
