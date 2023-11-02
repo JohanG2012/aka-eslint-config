@@ -8,21 +8,10 @@ on:
 jobs:
   publish:
     runs-on: ubuntu-latest
+    if: startsWith(github.event.head_commit.message, 'version-bump')  # Ensures job only runs if commit message starts with 'version-bump'
     steps:
       - name: Check out repository
         uses: actions/checkout@v2
-        with:
-          fetch-depth: 0  # Fetches all history for all branches and tags
-
-      - name: Get the commit message
-        id: commit-message
-        run: echo "Commit message >> ${{ github.event.head_commit.message }}"
-
-      - name: Publish to GitHub Packages
-        if: startsWith(github.event.head_commit.message, 'version-bump')
-        run: npm publish
-        env:
-          NODE_AUTH_TOKEN: ${{ secrets.GH_PACKAGES_TOKEN }}
 
       - name: Set up Node.js
         uses: actions/setup-node@v2
@@ -34,7 +23,6 @@ jobs:
         run: npm install
 
       - name: Publish to GitHub Packages
-        if: startsWith(github.event.head_commit.message, 'version-bump')
         run: npm publish
         env:
           NODE_AUTH_TOKEN: ${{ secrets.GH_PACKAGES_TOKEN }}
