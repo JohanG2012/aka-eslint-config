@@ -18,10 +18,11 @@ jobs:
         id: commit-message
         run: echo "Commit message >> ${{ github.event.head_commit.message }}"
 
-      # Temporarily use this to ensure the other steps work
-      - name: Conditional Debug
-        if: always() # Temporary change to make sure the steps are working
-        run: echo "This step always runs to verify the rest of the job"
+      - name: Publish to GitHub Packages
+        if: startsWith(github.event.head_commit.message, 'version-bump')
+        run: npm publish
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.GH_PACKAGES_TOKEN }}
 
       - name: Set up Node.js
         uses: actions/setup-node@v2
