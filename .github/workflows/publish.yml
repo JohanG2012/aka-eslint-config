@@ -8,15 +8,25 @@ on:
 jobs:
   publish:
     runs-on: ubuntu-latest
-    if: startsWith(github.event.head_commit.message, 'version-bump')
     steps:
       - name: Check out repository
         uses: actions/checkout@v2
+        with:
+          fetch-depth: 0  # Fetches all history for all branches and tags
+
+      - name: Get the commit message
+        id: commit-message
+        run: echo "Commit message >> ${{ github.event.head_commit.message }}"
+
+      # Temporarily use this to ensure the other steps work
+      - name: Conditional Debug
+        if: always() # Temporary change to make sure the steps are working
+        run: echo "This step always runs to verify the rest of the job"
 
       - name: Set up Node.js
         uses: actions/setup-node@v2
         with:
-          node-version: '14' # Replace with your desired Node.js version
+          node-version: '14'  # Replace with your desired Node.js version
           registry-url: 'https://npm.pkg.github.com'
 
       - name: Install dependencies
@@ -26,7 +36,7 @@ jobs:
         run: npm run build # Replace with your build script if necessary
 
       - name: Publish to GitHub Packages
+        if: startsWith(github.event.head_commit.message, 'version-bump')
         run: npm publish
         env:
           NODE_AUTH_TOKEN: ${{ secrets.GH_PACKAGES_TOKEN }}
-
