@@ -15,7 +15,7 @@ jobs:
         uses: actions/checkout@v2
         with:
           fetch-depth: 0  # Ensures all history is fetched
-
+          token: ${{ secrets.GITHUB_TOKEN }}
       - name: Bump version and push tag
         id: bump_version  # Adding an ID to use its output
         uses: phips28/gh-action-bump-version@v10.1.1
