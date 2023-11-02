@@ -1,4 +1,5 @@
-![Alt text](https://github.com/JohanG2012/aka-eslint-config/blob/main/.github/images/logo.png)
+<img src="https://github.com/JohanG2012/aka-eslint-config/blob/main/.github/images/logo.png" alt="alt text" width="100" height="100">
+
 
 # Also Known As eslint-config 🎉
 
