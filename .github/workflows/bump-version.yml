@@ -16,7 +16,7 @@ jobs:
 
       - name: Bump version and push tag
         id: bump_version  # Adding an ID to use its output
-        uses: phips28/gh-action-bump-version@v4.10.1
+        uses: phips28/gh-action-bump-version@v10.1.1
         env:
           GITHUB_TOKEN: ${{ secrets.GH_PACKAGES_TOKEN }}
           PACKAGEJSON_DIR: '.'
